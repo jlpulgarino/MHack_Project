@@ -1,0 +1,12 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /api/carrito/all/            controllers.implementacion.CarritosController.getCarritos()
+POST        /api/carrito/add/            controllers.implementacion.CarritosController.save()
+#DELETE      /api/carrito/del/            controllers.implementacion.CarritosController.delete()
+
+GET         /                             controllers.implementacion.CarritosController.getCarritos()
+# Map static resources from the /public folder to the /assets URL path
+GET         /*file                          controllers.Assets.versioned(path="/public", file: Asset)
