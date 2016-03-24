@@ -6,3 +6,8 @@ target
 /.project
 /.settings
 /RUNNING_PID
+
+.DS_Store
+bin/
+.cache
+.cache-main

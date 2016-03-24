@@ -17,9 +17,9 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "9.4-1201-jdbc41"
 )
 
-libraryDependencies ++= Seq(
-  "com.amazonaws" % "aws-java-sdk" % "1.10.21"
-)
+//libraryDependencies ++= Seq(
+//  "com.amazonaws" % "aws-java-sdk" % "1.10.21"
+//)
 
 dependencyOverrides += "com.google.guava" % "guava" % "18.0"
 
@@ -34,3 +34,8 @@ PlayKeys.externalizeResources := false
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
+
+
+//Eclipse task
+// Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
+EclipseKeys.preTasks := Seq(compile in Compile)
