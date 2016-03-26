@@ -7,6 +7,6 @@ GET         /api/carrito/all/            controllers.implementacion.CarritosCont
 POST        /api/carrito/add/            controllers.implementacion.CarritosController.save()
 #DELETE      /api/carrito/del/            controllers.implementacion.CarritosController.delete()
 
-GET         /                             controllers.implementacion.CarritosController.getCarritos()
+GET         /                             controllers.Assets.at(path="/public", file= "index.html")
 # Map static resources from the /public folder to the /assets URL path
-GET         /*file                          controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                          controllers.Assets.versioned(path="/public", file: Asset)
