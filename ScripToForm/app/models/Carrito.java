@@ -16,9 +16,9 @@ import java.sql.Date;
     @Column(nullable=false)
     private Long idUsuario;
     @Column(nullable=false)
-    private Date FechaCreacion;
+    private Date fechaCreacion;
     @Column(nullable=true)
-    private Date FechaActualizacion;
+    private Date fechaActualizacion;
     /**
      * Estados soportados X:Cancelado, C:Cerrado, O:Abierto;
      */
@@ -43,22 +43,6 @@ import java.sql.Date;
         this.idUsuario = idUsuario;
     }
 
-    public Date getFechaCreacion() {
-        return FechaCreacion;
-    }
-
-    public void setFechaCreacion(Date fechaCreacion) {
-        FechaCreacion = fechaCreacion;
-    }
-
-    public Date getFechaActualizacion() {
-        return FechaActualizacion;
-    }
-
-    public void setFechaActualizacion(Date fechaActualizacion) {
-        FechaActualizacion = fechaActualizacion;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -73,5 +57,21 @@ import java.sql.Date;
 
     public void setMedioPago(String medioPago) {
         this.medioPago = medioPago;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(Date fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
     }
 }

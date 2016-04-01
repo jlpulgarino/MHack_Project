@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
  */
 public class CarritosController extends Controller {
     private static ICarrito carritos= new Carritos();
-    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
     ObjectMapper objectMapper = new ObjectMapper();
 
     @Transactional
@@ -28,14 +28,13 @@ public class CarritosController extends Controller {
     @Transactional
     public Result save() {
 
+        objectMapper.setDateFormat(df);
+        Json.setObjectMapper(objectMapper);
         JsonNode json = request().body().asJson();
         JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"El producto de la calificación no existe\"}");
         Carrito carrito = Json.fromJson(json,Carrito.class);
         if(carrito!=null){
-
             carrito= carritos.save(carrito);
-            objectMapper.setDateFormat(df);
-            Json.setObjectMapper(objectMapper);
             respuesta=Json.toJson(carrito);
         }
         return ok(Json.toJson(respuesta));
