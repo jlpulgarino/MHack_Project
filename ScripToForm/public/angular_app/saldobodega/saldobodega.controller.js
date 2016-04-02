@@ -3,22 +3,13 @@
   angular.module('invApp')
     .controller('saldoBodegaCtrl', saldoBodegaCtrl);
 
-  saldoBodegaCtrl.$inject = [];
-  function saldoBodegaCtrl(){
+  saldoBodegaCtrl.$inject = ['invData'];
+  function saldoBodegaCtrl(invData){
     var vm = this;
 
     vm.data = {};
     vm.data.create = true;
-    vm.data.saldobodegas = [
-      {
-        "id": 1,
-        "nombre": "Bodega 1"
-      },
-      {
-        "id": 2,
-        "nombre": "Bodega 2"
-      }
-    ];
+    vm.data.saldobodegas = invData.getSaldos();
 
     vm.data.saldobodega = {};
 
