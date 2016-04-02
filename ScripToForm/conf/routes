@@ -8,8 +8,8 @@ POST        /api/carrito/add/            controllers.implementacion.CarritosCont
 #DELETE      /api/carrito/del/            controllers.implementacion.CarritosController.delete()
 
 GET         /                             controllers.Assets.at(path="/public/html_app", file= "index.html")
-GET         /angular                      controllers.Assets.at(path="/public/angular_app", file= "index.html")
-GET         /ember                        controllers.Assets.at(path="/public/ember_app", file= "index.html")
+GET         /angular/                      controllers.Assets.at(path="/public/angular_app", file= "index.html")
+GET         /ember/                        controllers.Assets.at(path="/public/ember_app", file= "index.html")
 
 
 # Map static resources from the /public folder to the /assets URL path

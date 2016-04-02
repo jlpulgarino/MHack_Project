@@ -9,6 +9,16 @@
         controller: 'bodegaCtrl',
         controllerAs: 'vm'
       })
+      .when('/productos', {
+        templateUrl: '/assets/angular_app/productos/productos.view.html',
+        controller: 'productoCtrl',
+        controllerAs: 'vm'
+      })
+      .when('/saldobodegas', {
+        templateUrl: '/assets/angular_app/saldobodega/saldobodega.view.html',
+        controller: 'saldoBodegaCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/bodegas'});
 
     /*

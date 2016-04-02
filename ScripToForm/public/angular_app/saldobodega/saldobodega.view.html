@@ -1,0 +1,169 @@
+<navigation></navigation>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <button class="btn btn-success pull-right">
+            <span class="glyphicon glyphicon-plus"></span> Crear
+          </button>
+          <h4>SaldoBodega</h4>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>Nombre</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a>1</a></td>
+                <td>Bodega 1</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-primary">
+                      <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><a>1</a></td>
+                <td>Bodega 1</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-primary">
+                      <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 starter-template">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Detalles Bodega</h4>
+        </div>
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-2 control-label">Id</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Id" value="1" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Nombre">
+              </div>
+            </div>
+
+
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="btn-group pull-right">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus"></span> Agregar
+                  </button>
+                </div>
+                <h4>Saldo Bodega</h4>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>Codigo</th>
+                      <th>Producto</th>
+                      <th>Cantidad</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a>2</a></td>
+                      <td>S1</td>
+                      <td>P1</td>
+                      <td>15</td>
+                      <td>
+                        <button class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><a>2</a></td>
+                      <td>S1</td>
+                      <td>P1</td>
+                      <td>15</td>
+                      <td>
+                        <button class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Guardar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div><!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Seleccionar Saldo Bodega</h4>
+      </div>
+      <div class="modal-body">
+        <select class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
