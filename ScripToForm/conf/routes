@@ -2,11 +2,28 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+GET         /api/bodega/            controllers.implementacion.BodegasController.getBodegas()
+GET         /api/bodega/:idBodega   controllers.implementacion.BodegasController.getBodegaById(idBodega : Long)
+POST        /api/bodega/            controllers.implementacion.BodegasController.save()
+DELETE      /api/bodega/:idBodega   controllers.implementacion.BodegasController.delete(idBodega : Long)
+
+GET         /api/producto/              controllers.implementacion.ProductosController.getProductos()
+GET         /api/producto/:idProducto   controllers.implementacion.ProductosController.getProductoById(idProducto : Long)
+POST        /api/producto/              controllers.implementacion.ProductosController.save()
+DELETE      /api/producto/:idProducto   controllers.implementacion.ProductosController.delete(idProducto : Long)
+
+GET         /api/saldo/                     controllers.implementacion.SaldoBodegasController.getSaldoBodegas()
+GET         /api/saldo/:idSaldo             controllers.implementacion.SaldoBodegasController.getSaldoBodegaById(idSaldo : Long)
+GET         /api/saldo/bodega/:idBodega     controllers.implementacion.SaldoBodegasController.getSaldoBodegasByBodegaId(idBodega : Long)
+GET         /api/saldo/producto/:idProducto controllers.implementacion.SaldoBodegasController.getSaldoBodegasByProductoId(idProducto : Long)
+POST        /api/saldo/                     controllers.implementacion.SaldoBodegasController.save()
+DELETE      /api/saldo/:idSaldo             controllers.implementacion.SaldoBodegasController.delete(idSaldo : Long)
+
 GET         /api/carrito/all/            controllers.implementacion.CarritosController.getCarritos()
 POST        /api/carrito/add/            controllers.implementacion.CarritosController.save()
 #DELETE      /api/carrito/del/            controllers.implementacion.CarritosController.delete()
 
+# Home page
 GET         /                             controllers.Assets.at(path="/public", file= "index.html")
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                          controllers.Assets.versioned(path="/public", file: Asset)
