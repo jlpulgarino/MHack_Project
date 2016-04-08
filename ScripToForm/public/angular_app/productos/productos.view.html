@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <button class="btn btn-success pull-right">
+          <button class="btn btn-success pull-right" ng-click="vm.addSaldo()">
             <span class="glyphicon glyphicon-plus"></span> Crear
           </button>
           <h4>Productos</h4>
@@ -17,38 +17,27 @@
               <tr>
                 <th>id</th>
                 <th>Nombre</th>
+                <th>Descripcion</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a>1</a></td>
-                <td>Bodega 1</td>
+              <tr ng-repeat="dato in vm.data.lista">
+                <td>{{ dato.id }}</td>
+                <td>{{ dato.nombre }}</td>
+                <td>{{ dato.descripcion }}</td>
                 <td>
                   <div class="btn-group">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" ng-click="vm.editProducto(dato)">
                       <span class="glyphicon glyphicon-edit"></span>
                     </button>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-danger" ng-click="vm.deleteProducto(dato.id)">
                       <span class="glyphicon glyphicon-remove"></span>
                     </button>
                   </div>
                 </td>
               </tr>
-              <tr>
-                <td><a>1</a></td>
-                <td>Bodega 1</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-primary">
-                      <span class="glyphicon glyphicon-edit"></span>
-                    </button>
-                    <button class="btn btn-danger">
-                      <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>
@@ -65,13 +54,19 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Id</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Id" value="1" disabled>
+                <input type="text" class="form-control" id="inputEmail3" placeholder="Id" ng-model="vm.data.detalle.id" ng-disabled="!vm.data.create">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword3" class="col-sm-2 control-label">Nombre</label>
+              <label for="cantidad" class="col-sm-2 control-label">Nombre</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Nombre">
+                <input type="text" class="form-control" id="cantidad" placeholder="0" ng-model="vm.data.detalle.nombre">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="descripcion" placeholder="0" ng-model="vm.data.detalle.descripcion">
               </div>
             </div>
 
@@ -84,7 +79,7 @@
                     <span class="glyphicon glyphicon-plus"></span> Agregar
                   </button>
                 </div>
-                <h4>Saldo Bodega</h4>
+                <h4>Bodega</h4>
               </div>
               <div class="table-responsive">
                 <table class="table">
@@ -129,7 +124,8 @@
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Guardar</button>
+                <button ng-show="!vm.data.create" type="button" class="btn btn-primary">Guardar</button>
+                <button ng-show="vm.data.create" type="button" class="btn btn-success" ng-click="vm.crearProducto()">Crear</button>
               </div>
             </div>
           </form>

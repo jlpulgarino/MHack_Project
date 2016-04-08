@@ -66,14 +66,47 @@
       });
     };
 
+    /**
+     * Productos
+     */
+
+    var getProductos = function(callback){
+      $http.get('/api/producto/').then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
+    var addProducto = function(data, callback){
+      $http.post('/api/producto/', data).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
+    var deleteProducto = function(id, callback){
+      $http.delete('/api/producto/' + id).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
     return {
       getBodegas: getBodegas,
       addBodega: addBodega,
       deleteBodega: deleteBodega,
       getSaldos: getSaldos,
       addSaldos: addSaldos,
-      deleteSaldos: deleteSaldos
-
+      deleteSaldos: deleteSaldos,
+      getProductos: getProductos,
+      addProducto: addProducto,
+      deleteProducto: deleteProducto
     };
   }
 
