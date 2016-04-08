@@ -11,3 +11,4 @@ target
 bin/
 .cache
 .cache-main
+tags
