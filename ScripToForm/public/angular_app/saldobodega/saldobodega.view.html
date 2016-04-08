@@ -120,7 +120,7 @@
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button ng-show="!vm.data.create" type="button" class="btn btn-primary">Guardar</button>
+                <button ng-show="!vm.data.create" type="button" class="btn btn-primary" ng-click="vm.updateSaldo()">Guardar</button>
                 <button ng-show="vm.data.create" type="button" class="btn btn-success" ng-click="vm.crearSaldo()">Crear</button>
               </div>
             </div>

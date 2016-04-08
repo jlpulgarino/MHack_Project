@@ -37,6 +37,22 @@
       vm.data.detalle = {};
     };
 
+    vm.updateSaldo = function(){
+      vm.data.create = false;
+      var detalle = angular.copy(vm.data.detalle);
+
+      invData.updateSaldo(detalle, function(detalle){
+        for(var i = 0; i < vm.data.lista.length; i++){
+          if(vm.data.lista[i].id === detalle.id){
+            vm.data.lista[i] = detalle;
+            break;
+          }
+        }
+      });
+
+      vm.data.detalle = {};
+    };
+
     vm.deleteSaldo = function(id){
       invData.deleteSaldos(id, function(data){
         for(var i = 0; i < vm.data.lista.length; i++){

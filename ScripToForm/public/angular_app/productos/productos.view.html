@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <button class="btn btn-success pull-right" ng-click="vm.addSaldo()">
+          <button class="btn btn-success pull-right" ng-click="vm.addProducto()">
             <span class="glyphicon glyphicon-plus"></span> Crear
           </button>
           <h4>Productos</h4>
@@ -124,7 +124,7 @@
 
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button ng-show="!vm.data.create" type="button" class="btn btn-primary">Guardar</button>
+                <button ng-show="!vm.data.create" type="button" class="btn btn-primary" ng-click="vm.updateProducto()">Guardar</button>
                 <button ng-show="vm.data.create" type="button" class="btn btn-success" ng-click="vm.crearProducto()">Crear</button>
               </div>
             </div>

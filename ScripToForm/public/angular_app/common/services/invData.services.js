@@ -26,6 +26,15 @@
       });
     };
 
+    var updateBodega = function(data, callback){
+      $http.post('/api/bodega/', data).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
     var deleteBodega = function(id, callback){
       $http.delete('/api/bodega/' + id).then(function(response){
         callback(response.data);
@@ -49,6 +58,15 @@
     };
 
     var addSaldos = function(data, callback){
+      $http.post('/api/saldo/', data).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
+    var updateSaldo = function(data, callback){
       $http.post('/api/saldo/', data).then(function(response){
         callback(response.data);
       },
@@ -88,6 +106,15 @@
       });
     };
 
+    var updateProducto = function(data, callback){
+      $http.post('/api/producto/', data).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
     var deleteProducto = function(id, callback){
       $http.delete('/api/producto/' + id).then(function(response){
         callback(response.data);
@@ -100,13 +127,19 @@
     return {
       getBodegas: getBodegas,
       addBodega: addBodega,
+      updateBodega: updateBodega,
       deleteBodega: deleteBodega,
+
       getSaldos: getSaldos,
       addSaldos: addSaldos,
+      updateSaldo: updateSaldo,
       deleteSaldos: deleteSaldos,
+
       getProductos: getProductos,
       addProducto: addProducto,
-      deleteProducto: deleteProducto
+      updateProducto: updateProducto,
+      deleteProducto: deleteProducto,
+
     };
   }
 

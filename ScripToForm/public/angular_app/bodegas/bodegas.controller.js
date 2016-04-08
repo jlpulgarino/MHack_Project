@@ -9,39 +9,56 @@
     vm.data = {};
 
     invData.getBodegas(function(data){
-      vm.data.bodegas = data;
+      vm.data.lista = data;
     });
 
     vm.data.create = true;
-    vm.data.bodega = {};
+    vm.data.detalle = {};
     vm.addBodega = function(){
       vm.data.create = true;
-      vm.data.bodega = {};
+      vm.data.detalle = {};
     };
 
-    vm.editBodega = function(bodega){
+    vm.editBodega = function(detalle){
       vm.data.create = false;
-      vm.data.bodega = {};
-      vm.data.bodega.id = bodega.id;
-      vm.data.bodega.nombre = bodega.nombre;
+      vm.data.detalle = {};
+      vm.data.detalle.id = detalle.id;
+      vm.data.detalle.nombre = detalle.nombre;
     };
 
     vm.crearBodega = function(){
       vm.data.create = false;
-      var bodega = angular.copy(vm.data.bodega);
+      var detalle = angular.copy(vm.data.detalle);
 
-      invData.addBodega(bodega, function(data){
-          vm.data.bodegas.push(bodega);
+      invData.addBodega(detalle, function(detalle){
+          vm.data.lista.push(detalle);
       });
 
-      vm.data.bodega = {};
+      vm.data.detalle = {};
     };
+
+    vm.updateBodega = function(){
+      vm.data.create = false;
+      var detalle = angular.copy(vm.data.detalle);
+
+      invData.updateBodega(detalle, function(detalle){
+        for(var i = 0; i < vm.data.lista.length; i++){
+          if(vm.data.lista[i].id === detalle.id){
+            vm.data.lista[i] = detalle;
+            break;
+          }
+        }
+      });
+
+      vm.data.detalle = {};
+    };
+
 
     vm.deleteBodega = function(id){
       invData.deleteBodega(id, function(data){
-        for(var i = 0; i < vm.data.bodegas.length; i++){
-          if(vm.data.bodegas[i].id === id){
-            vm.data.bodegas.splice(i, 1);
+        for(var i = 0; i < vm.data.lista.length; i++){
+          if(vm.data.lista[i].id === id){
+            vm.data.lista.splice(i, 1);
             break;
           }
         }

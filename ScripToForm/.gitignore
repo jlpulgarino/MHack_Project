@@ -12,3 +12,5 @@ bin/
 .cache
 .cache-main
 tags
+.tags
+.tags1
