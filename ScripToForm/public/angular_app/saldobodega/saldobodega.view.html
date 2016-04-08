@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <button class="btn btn-success pull-right" ng-click="vm.addSaldoBodega()">
+          <button class="btn btn-success pull-right" ng-click="vm.addSaldo()">
             <span class="glyphicon glyphicon-plus"></span> Crear
           </button>
           <h4>SaldoBodega</h4>
@@ -16,20 +16,24 @@
             <thead>
               <tr>
                 <th>id</th>
-                <th>Nombre</th>
+                <th>idBodega</th>
+                <th>idProducto</th>
+                <th>cantidad</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="saldobodega in vm.data.saldobodegas">
-                <td>{{ saldobodega.id }}</td>
-                <td>{{ saldobodega.nombre }}</td>
+              <tr ng-repeat="dato in vm.data.lista">
+                <td>{{ dato.id }}</td>
+                <td>{{ dato.idBodega }}</td>
+                <td>{{ dato.idProducto }}</td>
+                <td>{{ dato.cantidad }}</td>
                 <td>
                   <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="vm.editSaldoBodega(saldobodega)">
+                    <button class="btn btn-primary" ng-click="vm.editSaldo(dato)">
                       <span class="glyphicon glyphicon-edit"></span>
                     </button>
-                    <button class="btn btn-danger">
+                    <button class="btn btn-danger" ng-click="vm.deleteSaldo(dato.id)">
                       <span class="glyphicon glyphicon-remove"></span>
                     </button>
                   </div>
@@ -52,13 +56,13 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Id</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Id" value="{{ vm.data.saldobodega.id }}" disabled>
+                <input type="text" class="form-control" id="inputEmail3" placeholder="Id" ng-model="vm.data.detalle.id" ng-disabled="!vm.data.create">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputPassword3" class="col-sm-2 control-label">Nombre</label>
+              <label for="cantidad" class="col-sm-2 control-label">Cantidad</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputPassword3" placeholder="Nombre" value="{{ vm.data.saldobodega.nombre }}">
+                <input type="text" class="form-control" id="cantidad" placeholder="0" ng-model="vm.data.detalle.cantidad">
               </div>
             </div>
 
@@ -71,7 +75,7 @@
                     <span class="glyphicon glyphicon-plus"></span> Agregar
                   </button>
                 </div>
-                <h4>Saldo Bodega</h4>
+                <h4>Bodega</h4>
               </div>
               <div class="table-responsive">
                 <table class="table">
@@ -117,7 +121,7 @@
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                 <button ng-show="!vm.data.create" type="button" class="btn btn-primary">Guardar</button>
-                <button ng-show="vm.data.create" type="button" class="btn btn-success">Crear</button>
+                <button ng-show="vm.data.create" type="button" class="btn btn-success" ng-click="vm.crearSaldo()">Crear</button>
               </div>
             </div>
           </form>

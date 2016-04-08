@@ -6,25 +6,46 @@
   saldoBodegaCtrl.$inject = ['invData'];
   function saldoBodegaCtrl(invData){
     var vm = this;
-
     vm.data = {};
+
+    invData.getSaldos(function(data){
+      vm.data.lista = data;
+    });
+
     vm.data.create = true;
-    vm.data.saldobodegas = invData.getSaldos();
-
-    vm.data.saldobodega = {};
-
-    vm.editSaldoBodega = function(saldobodega){
-      vm.data.create = false;
-      vm.data.saldobodega = saldobodega;
-    };
-
-    vm.addSaldoBodega = function(saldobodega){
+    vm.data.detalle = {};
+    vm.addSaldo = function(){
       vm.data.create = true;
-      vm.data.saldobodega = {};
+      vm.data.detalle = {};
     };
 
-    vm.removeSaldoBodega = function(saldobodega){
+    vm.editSaldo = function(detalle){
+      vm.data.create = false;
+      vm.data.detalle = {};
+      vm.data.detalle.id = detalle.id;
+      vm.data.detalle.cantidad = detalle.cantidad;
+    };
 
+    vm.crearSaldo = function(){
+      vm.data.create = false;
+      var detalle = angular.copy(vm.data.detalle);
+
+      invData.addSaldos(detalle, function(detalle){
+          vm.data.lista.push(detalle);
+      });
+
+      vm.data.detalle = {};
+    };
+
+    vm.deleteSaldo = function(id){
+      invData.deleteSaldos(id, function(data){
+        for(var i = 0; i < vm.data.lista.length; i++){
+          if(vm.data.lista[i].id === id){
+            vm.data.lista.splice(i, 1);
+            break;
+          }
+        }
+      });
     };
 
   }
