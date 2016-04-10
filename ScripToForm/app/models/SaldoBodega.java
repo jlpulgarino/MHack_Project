@@ -14,6 +14,10 @@ import javax.persistence.*;
 })
 public class SaldoBodega {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "saldoBodegaGen")
+    @SequenceGenerator(name = "saldoBodegaGen",
+            sequenceName = "saldoBodega_seq")
     @Column
     private long id;
     @Column

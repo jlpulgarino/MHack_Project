@@ -13,6 +13,10 @@ import javax.persistence.*;
 public class Bodega {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "bodegaGen")
+    @SequenceGenerator(name = "bodegaGen",
+            sequenceName = "bodega_seq")
     @Column
     private long id;
     @Column

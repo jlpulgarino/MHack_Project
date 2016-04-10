@@ -19,7 +19,11 @@ public class SaldoBodegasController extends Controller {
         return ok(Json.toJson(saldoBodegas.getSaldoBodegas()));
     }
     @Transactional
-    public Result getSaldoBodegaById(long id) {
+    public Result getSaldoBodegaBySaldoId(long id) {
+        return ok(Json.toJson(saldoBodegas.getSaldoBodegaById(id)));
+    }
+    @Transactional
+    public Result getSaldoBodegaById(long bodegaId, long id) {
         return ok(Json.toJson(saldoBodegas.getSaldoBodegaById(id)));
     }
     @Transactional
@@ -32,7 +36,7 @@ public class SaldoBodegasController extends Controller {
     }
 
     @Transactional
-    public Result save() {
+    public Result save(long bodegaId) {
 
         JsonNode json = request().body().asJson();
         JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en productos\"}");
@@ -45,7 +49,7 @@ public class SaldoBodegasController extends Controller {
     }
 
     @Transactional
-    public Result delete(long id) {
+    public Result delete(long bodegaId, long id) {
 
         JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en bodegas\"}");
         SaldoBodega saldoBodega= saldoBodegas.delete(id);

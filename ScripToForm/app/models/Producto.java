@@ -12,6 +12,10 @@ import javax.persistence.*;
 })
 public class Producto {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "productoGen")
+    @SequenceGenerator(name = "productoGen",
+            sequenceName = "producto_seq")
     @Column
     private long id;
     @Column
