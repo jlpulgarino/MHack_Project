@@ -67,7 +67,7 @@
     };
 
     var updateSaldo = function(data, callback){
-      $http.post('/api/saldo/', data).then(function(response){
+      $http.put('/api/saldo/' + data.id, data).then(function(response){
         callback(response.data);
       },
       function(response){//error

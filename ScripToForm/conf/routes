@@ -23,6 +23,8 @@ DELETE      /api/producto/:idProducto   controllers.implementacion.ProductosCont
 #Saldo bodega
 GET         /api/saldo/       controllers.implementacion.SaldoBodegasController.getSaldoBodegas()
 POST        /api/saldo/       controllers.implementacion.SaldoBodegasController.saveOne()
+GET         /api/saldo/:id       controllers.implementacion.SaldoBodegasController.getSaldoBodegaByIdOne(id: Long)
+PUT         /api/saldo/:id       controllers.implementacion.SaldoBodegasController.update(id: Long)
 DELETE      /api/saldo/:id    controllers.implementacion.SaldoBodegasController.deleteOne(id: Long)
 
 

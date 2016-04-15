@@ -12,6 +12,14 @@
       vm.data.lista = data;
     });
 
+    invData.getBodegas(function(data){
+      vm.data.bodegas = data;
+    });
+
+    invData.getProductos(function(data){
+      vm.data.productos = data;
+    });
+
     vm.data.create = true;
     vm.data.detalle = {};
     vm.addSaldo = function(){

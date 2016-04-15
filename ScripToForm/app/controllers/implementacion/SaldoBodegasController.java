@@ -27,6 +27,11 @@ public class SaldoBodegasController extends Controller {
         return ok(Json.toJson(saldoBodegas.getSaldoBodegaById(id)));
     }
     @Transactional
+    public Result getSaldoBodegaByIdOne(long id) {
+        return ok(Json.toJson(saldoBodegas.getSaldoBodegaById(id)));
+    }
+
+    @Transactional
     public Result getSaldoBodegasByBodegaId(long bodegaId) {
         return ok(Json.toJson(saldoBodegas.getSaldoBodegasByBodegaId(bodegaId)));
     }
@@ -57,6 +62,21 @@ public class SaldoBodegasController extends Controller {
         System.out.println(saldoBodega);
         if(saldoBodega!=null){
             saldoBodega= saldoBodegas.save(saldoBodega);
+            respuesta=Json.toJson(saldoBodega);
+        }
+        return ok(respuesta);
+    }
+
+    @Transactional
+    public Result update(long id) {
+
+        JsonNode json = request().body().asJson();
+        JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en productos\"}");
+        SaldoBodega saldoBodega = Json.fromJson(json,SaldoBodega.class);
+        saldoBodega.setId(id);
+        System.out.println(saldoBodega);
+        if(saldoBodega!=null){
+            saldoBodega= saldoBodegas.update(saldoBodega);
             respuesta=Json.toJson(saldoBodega);
         }
         return ok(respuesta);

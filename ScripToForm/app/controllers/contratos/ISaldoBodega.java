@@ -17,6 +17,7 @@ public interface ISaldoBodega {
     public List<SaldoBodega> getSaldoBodegasByProductoId(long productoId);
 
     SaldoBodega save(SaldoBodega saldoBodega);
+    SaldoBodega update(SaldoBodega saldoBodega);
     SaldoBodega delete(long id);
 
 

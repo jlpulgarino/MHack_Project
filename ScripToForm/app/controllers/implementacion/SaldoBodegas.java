@@ -36,19 +36,27 @@ public class SaldoBodegas implements ISaldoBodega {
     public SaldoBodega save(SaldoBodega saldoBodega) {
         EntityManager em = JPA.em();
         SaldoBodega saldoBodegaTmp;
+        saldoBodegaTmp = new SaldoBodega();
+        saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
+        saldoBodegaTmp.setIdBodega(saldoBodega.getIdBodega());
+        saldoBodegaTmp.setIdProducto(saldoBodega.getIdProducto());
+        em.persist(saldoBodegaTmp);
+        return saldoBodegaTmp;
+    }
+
+    @Transactional
+    public SaldoBodega update(SaldoBodega saldoBodega) {
+        EntityManager em = JPA.em();
+        SaldoBodega saldoBodegaTmp;
         saldoBodegaTmp = em.find(SaldoBodega.class, saldoBodega.getId());
         if(saldoBodegaTmp == null){
-            saldoBodegaTmp = new SaldoBodega();
-            saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
-            saldoBodegaTmp.setIdBodega(saldoBodega.getIdBodega());
-            saldoBodegaTmp.setIdProducto(saldoBodega.getIdProducto());
-            em.persist(saldoBodegaTmp);
-            return saldoBodegaTmp;
-        }else{
-            saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
-            saldoBodega = em.merge(saldoBodegaTmp);
+            //Bodega no existe
+            return null;
         }
-
+        saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
+        saldoBodegaTmp.setIdBodega(saldoBodega.getIdBodega());
+        saldoBodegaTmp.setIdProducto(saldoBodega.getIdProducto());
+        saldoBodega = em.merge(saldoBodegaTmp);
         return saldoBodega;
     }
 
