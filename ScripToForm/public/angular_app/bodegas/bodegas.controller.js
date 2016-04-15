@@ -17,6 +17,7 @@
     vm.addBodega = function(){
       vm.data.create = true;
       vm.data.detalle = {};
+      vm.data.saldos = [];
     };
 
     vm.editBodega = function(detalle){
@@ -24,6 +25,11 @@
       vm.data.detalle = {};
       vm.data.detalle.id = detalle.id;
       vm.data.detalle.nombre = detalle.nombre;
+
+      invData.getSaldosBodega(detalle.id, function(data){
+        vm.data.saldos = data;
+      });
+
     };
 
     vm.crearBodega = function(){
@@ -35,6 +41,7 @@
       });
 
       vm.data.detalle = {};
+      vm.data.saldos = [];
     };
 
     vm.updateBodega = function(){
@@ -51,6 +58,7 @@
       });
 
       vm.data.detalle = {};
+      vm.data.saldos = [];
     };
 
 

@@ -51,7 +51,7 @@
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Id</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Id" ng-model="vm.data.detalle.id" ng-disabled="!vm.data.create">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="Id" ng-model="vm.data.detalle.id" disabled>
               </div>
             </div>
             <div class="form-group">
@@ -65,11 +65,6 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                <div class="btn-group pull-right">
-                  <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
-                    <span class="glyphicon glyphicon-plus"></span> Agregar
-                  </button>
-                </div>
                 <h4>Saldo Bodega</h4>
               </div>
               <div class="table-responsive">
@@ -77,29 +72,18 @@
                   <thead>
                     <tr>
                       <th>id</th>
-                      <th>Codigo</th>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
+                      <th>idBodega</th>
+                      <th>idProducto</th>
+                      <th>cantidad</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><a>2</a></td>
-                      <td>S1</td>
-                      <td>P1</td>
-                      <td>15</td>
-                      <td>
-                        <button class="btn btn-danger">
-                          <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a>2</a></td>
-                      <td>S1</td>
-                      <td>P1</td>
-                      <td>15</td>
+                    <tr ng-repeat="saldo in vm.data.saldos">
+                      <td><a>{{ saldo.id }}</a></td>
+                      <td> {{ saldo.idBodega }} </td>
+                      <td> {{ saldo.idBodega }} </td>
+                      <td> {{ saldo.cantidad }} </td>
                       <td>
                         <button class="btn btn-danger">
                           <span class="glyphicon glyphicon-remove"></span>

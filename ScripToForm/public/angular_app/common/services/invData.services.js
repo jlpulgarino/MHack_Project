@@ -44,6 +44,15 @@
       });
     };
 
+    var getSaldosBodega = function(id, callback){
+      $http.get('/api/bodega/'+ id +'/saldos/').then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
     /**
      * Saldos
      */
@@ -129,6 +138,7 @@
       addBodega: addBodega,
       updateBodega: updateBodega,
       deleteBodega: deleteBodega,
+      getSaldosBodega: getSaldosBodega,
 
       getSaldos: getSaldos,
       addSaldos: addSaldos,
