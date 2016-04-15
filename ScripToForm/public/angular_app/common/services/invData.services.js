@@ -53,6 +53,15 @@
       });
     };
 
+    var deleteSaldoBodega = function(idBodega, idSaldo, callback){
+      $http.delete('/api/bodega/' + idBodega + '/saldos/' + idSaldo ).then(function(response){
+        callback(response.data);
+      },
+      function(response){//error
+        console.log(response);
+      });
+    };
+
     /**
      * Saldos
      */
@@ -139,6 +148,7 @@
       updateBodega: updateBodega,
       deleteBodega: deleteBodega,
       getSaldosBodega: getSaldosBodega,
+      deleteSaldoBodega: deleteSaldoBodega,
 
       getSaldos: getSaldos,
       addSaldos: addSaldos,

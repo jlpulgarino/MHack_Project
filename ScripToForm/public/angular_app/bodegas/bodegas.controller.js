@@ -73,6 +73,17 @@
       });
     };
 
+    vm.deleteSaldoBodega = function(id){
+      invData.deleteSaldoBodega(vm.data.detalle.id, id, function(){
+        for(var i = 0; i < vm.data.saldos.length; i++){
+          if(vm.data.saldos[i].id === id){
+            vm.data.saldos.splice(i, 1);
+            break;
+          }
+        }
+      });
+    };
+
 
   }
 

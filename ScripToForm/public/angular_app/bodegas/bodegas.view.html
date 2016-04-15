@@ -85,7 +85,7 @@
                       <td> {{ saldo.idBodega }} </td>
                       <td> {{ saldo.cantidad }} </td>
                       <td>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger" ng-click="vm.deleteSaldoBodega(saldo.id)">
                           <span class="glyphicon glyphicon-remove"></span>
                         </button>
                       </td>
