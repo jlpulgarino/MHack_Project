@@ -38,7 +38,12 @@ public class SaldoBodegas implements ISaldoBodega {
         SaldoBodega saldoBodegaTmp;
         saldoBodegaTmp = em.find(SaldoBodega.class, saldoBodega.getId());
         if(saldoBodegaTmp == null){
-            em.persist(saldoBodega);
+            saldoBodegaTmp = new SaldoBodega();
+            saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
+            saldoBodegaTmp.setIdBodega(saldoBodega.getIdBodega());
+            saldoBodegaTmp.setIdProducto(saldoBodega.getIdProducto());
+            em.persist(saldoBodegaTmp);
+            return saldoBodegaTmp;
         }else{
             saldoBodegaTmp.setCantidad(saldoBodega.getCantidad());
             saldoBodega = em.merge(saldoBodegaTmp);

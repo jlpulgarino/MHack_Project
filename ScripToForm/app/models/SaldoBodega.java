@@ -58,4 +58,8 @@ public class SaldoBodega {
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
     }
+
+    public String toString(){
+      return this.id + ", " + this.idBodega + ", " + this.idProducto + ", " + this.cantidad;
+    }
 }

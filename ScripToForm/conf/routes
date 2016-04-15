@@ -19,6 +19,15 @@ POST        /api/producto/              controllers.implementacion.ProductosCont
 DELETE      /api/producto/:idProducto   controllers.implementacion.ProductosController.delete(idProducto : Long)
 
 
+#---------------------------------------------------
+#Saldo bodega
+GET         /api/saldo/       controllers.implementacion.SaldoBodegasController.getSaldoBodegas()
+POST        /api/saldo/       controllers.implementacion.SaldoBodegasController.saveOne()
+DELETE      /api/saldo/:id    controllers.implementacion.SaldoBodegasController.deleteOne(id: Long)
+
+
+
+#---------------------------------------------------
 GET         /api/carrito/all/            controllers.implementacion.CarritosController.getCarritos()
 POST        /api/carrito/add/            controllers.implementacion.CarritosController.save()
 #DELETE      /api/carrito/del/            controllers.implementacion.CarritosController.delete()
