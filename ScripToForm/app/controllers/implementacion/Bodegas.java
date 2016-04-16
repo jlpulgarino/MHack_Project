@@ -27,16 +27,26 @@ public class Bodegas implements IBodega {
     @Transactional
     public Bodega save(Bodega bodega) {
         EntityManager em = JPA.em();
+
+        Bodega bodegaTmp = new Bodega();
+        bodegaTmp.setNombre(bodega.getNombre());
+        em.persist(bodegaTmp);
+
+        return bodegaTmp;
+    }
+
+    @Transactional
+    public Bodega update(Bodega bodega) {
+        EntityManager em = JPA.em();
         Bodega bodegaTmp;
         bodegaTmp = em.find(Bodega.class, bodega.getId());
         if(bodegaTmp == null){
-            em.persist(bodega);
-        }else{
-            bodegaTmp.setNombre(bodega.getNombre());
-            bodega = em.merge(bodegaTmp);
+            //no encontrado
+            return null;
         }
-
-        return bodega;
+        bodegaTmp.setNombre(bodega.getNombre());
+        bodegaTmp = em.merge(bodegaTmp);
+        return bodegaTmp;
     }
 
     @Transactional

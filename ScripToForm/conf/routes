@@ -2,9 +2,13 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+#------------------------------------------
+# Bodega
+
 GET         /api/bodega/            controllers.implementacion.BodegasController.getBodegas()
 GET         /api/bodega/:idBodega   controllers.implementacion.BodegasController.getBodegaById(idBodega : Long)
 POST        /api/bodega/            controllers.implementacion.BodegasController.save()
+PUT         /api/bodega/:id         controllers.implementacion.BodegasController.update(id: Long)
 DELETE      /api/bodega/:idBodega   controllers.implementacion.BodegasController.delete(idBodega : Long)
 
 GET         /api/bodega/:idBodega/saldos/           controllers.implementacion.SaldoBodegasController.getSaldoBodegasByBodegaId(idBodega : Long)
@@ -13,9 +17,13 @@ POST        /api/bodega/:idBodega/saldos/           controllers.implementacion.S
 DELETE      /api/bodega/:idBodega/saldos/:idSaldo   controllers.implementacion.SaldoBodegasController.delete(idBodega :Long, idSaldo : Long)
 
 
+#-------------------------------------------------
+# Producto
+
 GET         /api/producto/              controllers.implementacion.ProductosController.getProductos()
 GET         /api/producto/:idProducto   controllers.implementacion.ProductosController.getProductoById(idProducto : Long)
 POST        /api/producto/              controllers.implementacion.ProductosController.save()
+PUT         /api/producto/:idProducto              controllers.implementacion.ProductosController.update(idProducto: Long)
 DELETE      /api/producto/:idProducto   controllers.implementacion.ProductosController.delete(idProducto : Long)
 
 

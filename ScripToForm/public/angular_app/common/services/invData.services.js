@@ -27,7 +27,7 @@
     };
 
     var updateBodega = function(data, callback){
-      $http.post('/api/bodega/', data).then(function(response){
+      $http.put('/api/bodega/'+data.id, data).then(function(response){
         callback(response.data);
       },
       function(response){//error
@@ -125,7 +125,7 @@
     };
 
     var updateProducto = function(data, callback){
-      $http.post('/api/producto/', data).then(function(response){
+      $http.put('/api/producto/' + data.id, data).then(function(response){
         callback(response.data);
       },
       function(response){//error

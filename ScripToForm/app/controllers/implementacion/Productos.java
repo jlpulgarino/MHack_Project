@@ -25,17 +25,28 @@ public class Productos implements IProducto {
     @Transactional
     public Producto save(Producto producto) {
         EntityManager em = JPA.em();
+        Producto productoTmp = new Producto();
+        productoTmp.setNombre(producto.getNombre());
+        productoTmp.setDescripcion(producto.getDescripcion());
+        em.persist(productoTmp);
+
+        return productoTmp;
+    }
+
+    @Transactional
+    public Producto update(Producto producto) {
+        EntityManager em = JPA.em();
         Producto productoTmp;
         productoTmp = em.find(Producto.class, producto.getId());
         if(productoTmp == null){
-            em.persist(producto);
-        }else{
-            productoTmp.setNombre(producto.getNombre());
-            productoTmp.setDescripcion(producto.getDescripcion());
-            producto = em.merge(productoTmp);
+            //No existe
+            return null;
         }
+        productoTmp.setNombre(producto.getNombre());
+        productoTmp.setDescripcion(producto.getDescripcion());
+        productoTmp = em.merge(productoTmp);
 
-        return producto;
+        return productoTmp;
     }
 
     @Transactional
@@ -48,5 +59,3 @@ public class Productos implements IProducto {
         return productoTmp;
     }
 }
-
-

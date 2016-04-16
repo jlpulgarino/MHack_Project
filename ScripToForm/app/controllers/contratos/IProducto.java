@@ -12,6 +12,7 @@ public interface IProducto {
     public Producto getProductoById(long id);
 
     Producto save(Producto producto);
+    Producto update(Producto producto);
     Producto delete(long id);
 
 

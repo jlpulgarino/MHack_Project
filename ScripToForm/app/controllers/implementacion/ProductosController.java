@@ -38,6 +38,20 @@ public class ProductosController extends Controller {
     }
 
     @Transactional
+    public Result update(Long id) {
+
+        JsonNode json = request().body().asJson();
+        JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en productos\"}");
+        Producto producto = Json.fromJson(json,Producto.class);
+        producto.setId(id);
+        if(producto!=null){
+            producto= productos.update(producto);
+            respuesta=Json.toJson(producto);
+        }
+        return ok(Json.toJson(respuesta));
+    }
+
+    @Transactional
     public Result delete(Long id) {
 
         JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en bodegas\"}");

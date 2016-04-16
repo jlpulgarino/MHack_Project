@@ -13,6 +13,7 @@ public interface IBodega {
     public Bodega getBodegaById(long id);
 
     Bodega save(Bodega bodega);
+    Bodega update(Bodega bodega);
     Bodega delete(long id);
 
 }

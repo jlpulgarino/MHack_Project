@@ -19,7 +19,7 @@ public class BodegasController extends Controller {
         return ok(Json.toJson(bodegas.getBodegas()));
     }
     @Transactional
-    public Result getBodegaById(long id) {
+    public Result getBodegaById(Long id) {
         return ok(Json.toJson(bodegas.getBodegaById(id)));
     }
 
@@ -31,6 +31,20 @@ public class BodegasController extends Controller {
         Bodega bodega = Json.fromJson(json,Bodega.class);
         if(bodega!=null){
             bodega= bodegas.save(bodega);
+            respuesta=Json.toJson(bodega);
+        }
+        return ok(Json.toJson(respuesta));
+    }
+
+    @Transactional
+    public Result update(Long id) {
+
+        JsonNode json = request().body().asJson();
+        JsonNode respuesta = Json.parse("{\"errorCode\":\"1\",\"desCode\":\"Error en bodegas\"}");
+        Bodega bodega = Json.fromJson(json,Bodega.class);
+        bodega.setId(id);
+        if(bodega!=null){
+            bodega= bodegas.update(bodega);
             respuesta=Json.toJson(bodega);
         }
         return ok(Json.toJson(respuesta));
