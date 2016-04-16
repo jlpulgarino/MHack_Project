@@ -7,13 +7,14 @@
   function saldoBodegaCtrl(invData){
     var vm = this;
     vm.data = {};
-
+    vm.data.selectedBodegaOption = {};
     invData.getSaldos(function(data){
       vm.data.lista = data;
     });
 
     invData.getBodegas(function(data){
       vm.data.bodegas = data;
+      //vm.data.selectedBodegaOption = {id:55};
     });
 
     invData.getProductos(function(data){
@@ -25,29 +26,46 @@
     vm.addSaldo = function(){
       vm.data.create = true;
       vm.data.detalle = {};
+      vm.data.selectedBodegaOption = {};
+      vm.data.selectedProductoOption = {};
     };
 
     vm.editSaldo = function(detalle){
       vm.data.create = false;
-      vm.data.detalle = {};
-      vm.data.detalle.id = detalle.id;
-      vm.data.detalle.cantidad = detalle.cantidad;
+      vm.data.detalle = angular.copy(detalle);
+      for(var n = 0; n < vm.data.bodegas.length; n++){
+        if(vm.data.bodegas[n].id === vm.data.detalle.idBodega){
+          vm.data.selectedBodegaOption = vm.data.bodegas[n];
+        }
+      }
+
+      for(n = 0; n < vm.data.productos.length; n++){
+        if(vm.data.productos[n].id === vm.data.detalle.idProducto){
+          vm.data.selectedProductoOption = vm.data.productos[n];
+        }
+      }
+
     };
 
     vm.crearSaldo = function(){
       vm.data.create = false;
       var detalle = angular.copy(vm.data.detalle);
+      detalle.idBodega = vm.data.selectedBodegaOption.id;
 
       invData.addSaldos(detalle, function(detalle){
           vm.data.lista.push(detalle);
       });
 
       vm.data.detalle = {};
+      vm.data.selectedBodegaOption = {};
+      vm.data.selectedProductoOption = {};
     };
 
     vm.updateSaldo = function(){
       vm.data.create = false;
       var detalle = angular.copy(vm.data.detalle);
+      detalle.idBodega = vm.data.selectedBodegaOption.id;
+      detalle.idProducto = vm.data.selectedProductoOption.id;
 
       invData.updateSaldo(detalle, function(detalle){
         for(var i = 0; i < vm.data.lista.length; i++){
@@ -59,6 +77,8 @@
       });
 
       vm.data.detalle = {};
+      vm.data.selectedBodegaOption = {};
+      vm.data.selectedProductoOption = {};
     };
 
     vm.deleteSaldo = function(id){
