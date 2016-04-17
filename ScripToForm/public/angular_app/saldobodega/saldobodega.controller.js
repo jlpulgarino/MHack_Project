@@ -33,17 +33,13 @@
     vm.editSaldo = function(detalle){
       vm.data.create = false;
       vm.data.detalle = angular.copy(detalle);
-      for(var n = 0; n < vm.data.bodegas.length; n++){
-        if(vm.data.bodegas[n].id === vm.data.detalle.idBodega){
-          vm.data.selectedBodegaOption = vm.data.bodegas[n];
-        }
-      }
+      vm.data.selectedBodegaOption = _.find(vm.data.bodegas, function(data){
+        return data.id === vm.data.detalle.idBodega;
+      });
 
-      for(n = 0; n < vm.data.productos.length; n++){
-        if(vm.data.productos[n].id === vm.data.detalle.idProducto){
-          vm.data.selectedProductoOption = vm.data.productos[n];
-        }
-      }
+      vm.data.selectedProductoOption = _.find(vm.data.productos, function(data){
+        return data.id === vm.data.detalle.idProducto;
+      });
 
     };
 
@@ -69,6 +65,7 @@
       detalle.idProducto = vm.data.selectedProductoOption.id;
 
       invData.updateSaldo(detalle, function(detalle){
+        
         for(var i = 0; i < vm.data.lista.length; i++){
           if(vm.data.lista[i].id === detalle.id){
             vm.data.lista[i] = detalle;
