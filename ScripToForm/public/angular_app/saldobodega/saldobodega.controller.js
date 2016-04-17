@@ -51,6 +51,7 @@
       vm.data.create = false;
       var detalle = angular.copy(vm.data.detalle);
       detalle.idBodega = vm.data.selectedBodegaOption.id;
+      detalle.idProducto = vm.data.selectedProductoOption.id;
 
       invData.addSaldos(detalle, function(detalle){
           vm.data.lista.push(detalle);
