@@ -23,65 +23,17 @@
   </head>
 
   <body>
-
 <!--
- Capa Crear Saldo Bodega
+ Capa Crear  Producto
 -->
-<div id="crearSaldo" class="modal fade">
+<div id="crearProducto" class="modal fade">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             ×
             </button>
-            <h3>Crear Saldo</h3>
-         </div>
-         <div class="modal-body">
-           <form class="form-horizontal">
-                <div class="form-group">
-                </div>
-               <div class="form-group">
-                  <label for="inputBodegaBodegaSaldo" class="col-sm-2 control-label">Bodega</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputBodegaBodegaSaldo" placeholder="Bodega">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputProductoSaldo" class="col-sm-2 control-label">Producto</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputProductoSaldo" placeholder="Producto">
-                  </div>
-                </div>
-               <div class="form-group">
-                  <label for="inputCantidadSaldo" class="col-sm-2 control-label">Cantidad</label>
-                  <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputCantidadSaldo" placeholder="Cantidad">
-                  </div>
-                </div>
-           </form>
-         </div>
-         <div class="modal-footer">
-             <a class="btn btn-success" onclick="crearSaldoBodega()">Guardar</a>
-            <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
-         </div>
-   	</div>
-   </div>
-</div>
-
-
-
-
-<!--
- Capa Crear Bodega
--->
-<div id="crearBodega" class="modal fade">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-            ×
-            </button>
-            <h3>Crear Bodega</h3>
+            <h3>Crear Producto</h3>
          </div>
          <div class="modal-body">
            <form class="form-horizontal">
@@ -96,23 +48,23 @@
            </form>
          </div>
          <div class="modal-footer">
-             <a class="btn btn-success" onclick="crearBodega()">Guardar</a>
+             <a class="btn btn-success" onclick="crearProducto()">Guardar</a>
             <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
          </div>
    	</div>
    </div>
 </div>
 <!--
- Capa Edit Bodega
+ Capa Edit Producto
 -->
-<div id="editarBodega" class="modal fade">
+<div id="editarProducto" class="modal fade">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
             ×
             </button>
-            <h3>Editar Bodega</h3>
+            <h3>Editar Producto</h3>
          </div>
          <div class="modal-body">
            <form class="form-horizontal">
@@ -131,7 +83,7 @@
            </form>
          </div>
          <div class="modal-footer">
-             <a class="btn btn-success" onclick="editarBodega()">Guardar</a>
+             <a class="btn btn-success" onclick="editarProducto()">Guardar</a>
             <a href="#" data-dismiss="modal" class="btn">Cerrar</a>
          </div>
    	</div>
@@ -164,58 +116,58 @@
         <div class="col-md-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <button class="btn btn-success pull-right" data-toggle="modal" data-target="#crearBodega" >
+              <button class="btn btn-success pull-right" data-toggle="modal" data-target="#crearProducto" >
                 <span class="glyphicon glyphicon-plus"></span> Crear
               </button>
 
-              <h4>Bodegas</h4>
+              <h4>Productos</h4>
             </div>
             <div class="table-responsive" id = "datos" >
 
             </div>
           </div>
         </div>
-
+<!--
         <div class="col-md-6 starter-template">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4>Detalles Bodega</h4>
+              <h4>Detalles Productos</h4>
             </div>
             <div class="panel-body">
               <form class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputBodegaSaldo" class="col-sm-2 control-label">Id</label>
+                  <label for="inputProductoSaldo" class="col-sm-2 control-label">Id</label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputBodegaSaldo" placeholder="Id" value="" disabled>
+                      <input type="text" class="form-control" id="inputProductoSaldo" placeholder="Id" value="" disabled>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputBodegaSaldoNombre" class="col-sm-2 control-label">Nombre</label>
+                  <label for="inputProductoSaldoNombre" class="col-sm-2 control-label">Nombre</label>
                   <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputBodegaSaldoNombre" placeholder="Nombre">
+                      <input type="text" class="form-control" id="inputProductoSaldoNombre" placeholder="Nombre">
                   </div>
                 </div>
-                </form>
+
 
 
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <div class="btn-group pull-right">
-                       <button class="btn btn-success pull-right" data-toggle="modal" data-target="#crearSaldo" >
-                         <span class="glyphicon glyphicon-plus"></span> Agregar
-                       </button>
+                      <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-plus"></span> Agregar
+                      </button>
                     </div>
-                    <h4>Saldo Bodega</h4>
+                    <h4>Saldo Producto</h4>
                   </div>
                   <div class="table-responsive" id="datosSaldos">
                   </div>
 
                 </div>
-
+              </form>
             </div>
           </div>
         </div>
-
+-->
 
       </div>
 
@@ -227,7 +179,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/assets/libs/jQuery/jquery-2.2.2.min.js"></script>
     <script src="/assets/libs/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-    <script src="/assets/html_app/bodegas/bodegas.controller.js"></script>
+    <script src="/assets/html_app/productos/productos.controller.js"></script>
 
   </body>
 </html>
